@@ -16,8 +16,10 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Build with Gradle
-      run: gradle assembleDebug --warning-mode all
+    - name: Setup Gradle Wrapper and Build
+      run: |
+        gradle wrapper --gradle-version 8.5
+        ./gradlew assembleDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
